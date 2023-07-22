@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Created-By: Copyright(c) 2023 ChengZhiYa
+Main-Class: cn.ChengZhiYa.BaiShenLauncher.Main
+Multi-Release: true
+Implementation-Version: 1.0.1.SNAPSHOT
+Build-Channel: unofficial
+Class-Path: pack200.jar
+Add-Opens: java.base/java.lang java.base/java.lang.reflect java.base/jdk
+ .internal.loader javafx.base/com.sun.javafx.binding javafx.base/com.sun
+ .javafx.event javafx.base/com.sun.javafx.runtime javafx.graphics/javafx
+ .css javafx.graphics/com.sun.javafx.stage javafx.graphics/com.sun.prism
+  javafx.controls/com.sun.javafx.scene.control javafx.controls/com.sun.j
+ avafx.scene.control.behavior javafx.controls/javafx.scene.control.skin
+
