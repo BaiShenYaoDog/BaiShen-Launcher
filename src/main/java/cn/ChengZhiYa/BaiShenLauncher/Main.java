@@ -49,7 +49,7 @@ public final class Main {
         if (OperatingSystem.CURRENT_OS == OperatingSystem.OSX)
             initIcon();
 
-        Logging.start(Metadata.HMCL_DIRECTORY.resolve("logs"));
+        Logging.start(Metadata.BSL_DIRECTORY.resolve("logs"));
 
         checkJavaFX();
         detectFractureiser();

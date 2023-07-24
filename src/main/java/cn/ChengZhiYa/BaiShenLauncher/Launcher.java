@@ -105,8 +105,8 @@ public final class Launcher extends Application {
 
         ArrayList<String> files = new ArrayList<>();
         files.add(ConfigHolder.configLocation().toString());
-        if (Files.exists(Metadata.HMCL_DIRECTORY))
-            files.add(Metadata.HMCL_DIRECTORY.toString());
+        if (Files.exists(Metadata.BSL_DIRECTORY))
+            files.add(Metadata.BSL_DIRECTORY.toString());
 
         Path mcDir = Paths.get(".minecraft").toAbsolutePath().normalize();
         if (Files.exists(mcDir))
@@ -203,7 +203,7 @@ public final class Launcher extends Application {
                     return;
             }
 
-            if (Metadata.HMCL_DIRECTORY.toString().indexOf('=') >= 0) {
+            if (Metadata.BSL_DIRECTORY.toString().indexOf('=') >= 0) {
                 Main.showWarningAndContinue("糯米糍,路径里面不能有=,这会让豹豹被限制的!\n(将不能使用皮肤站账户以及离线登录更换皮肤功能)");
             }
 

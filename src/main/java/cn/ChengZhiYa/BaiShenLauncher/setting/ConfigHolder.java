@@ -22,7 +22,7 @@ public final class ConfigHolder {
 
     public static final String CONFIG_FILENAME = "BSL.json";
     public static final String CONFIG_FILENAME_LINUX = ".BSL.json";
-    public static final Path GLOBAL_CONFIG_PATH = Metadata.HMCL_DIRECTORY.resolve("config.json");
+    public static final Path GLOBAL_CONFIG_PATH = Metadata.BSL_DIRECTORY.resolve("config.json");
     private static final InvocationDispatcher<String> globalConfigWriter = InvocationDispatcher.runOn(Lang::thread, content -> {
         try {
             writeToGlobalConfig(content);

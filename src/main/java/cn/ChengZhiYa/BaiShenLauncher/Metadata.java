@@ -13,7 +13,7 @@ import java.nio.file.Paths;
 public final class Metadata {
     public static final String NAME = "BaiShen-Launcher";
     public static final String FULL_NAME = "BaiShen-Launcher";
-    public static final String VERSION = "1.0.1";
+    public static final String VERSION = "1.0.3";
     public static final String TITLE = NAME + " " + VERSION;
     public static final String FULL_TITLE = FULL_NAME + " v" + VERSION;
     public static final String CONTACT_URL = "https://bing.com";
@@ -22,23 +22,23 @@ public final class Metadata {
     public static final String BUILD_CHANNEL = JarUtils.getManifestAttribute("Build-Channel", "nightly");
     public static final String GITHUB_SHA = JarUtils.getManifestAttribute("GitHub-SHA", null);
     public static final Path MINECRAFT_DIRECTORY = OperatingSystem.getWorkingDirectory("minecraft");
-    public static final Path HMCL_DIRECTORY;
+    public static final Path BSL_DIRECTORY;
 
     static {
-        String hmclHome = System.getProperty("BSL.home");
-        if (hmclHome == null) {
+        String BSLHome = System.getProperty("BSL.home");
+        if (BSLHome == null) {
             if (OperatingSystem.CURRENT_OS == OperatingSystem.LINUX) {
                 String xdgData = System.getenv("XDG_DATA_HOME");
                 if (StringUtils.isNotBlank(xdgData)) {
-                    HMCL_DIRECTORY = Paths.get(xdgData, "BSL").toAbsolutePath();
+                    BSL_DIRECTORY = Paths.get(xdgData, "BSL").toAbsolutePath();
                 } else {
-                    HMCL_DIRECTORY = Paths.get(System.getProperty("user.home", "."), ".local", "share", "BSL").toAbsolutePath();
+                    BSL_DIRECTORY = Paths.get(System.getProperty("user.home", "."), ".local", "share", "BSL").toAbsolutePath();
                 }
             } else {
-                HMCL_DIRECTORY = OperatingSystem.getWorkingDirectory("BSL");
+                BSL_DIRECTORY = OperatingSystem.getWorkingDirectory("BSL");
             }
         } else {
-            HMCL_DIRECTORY = Paths.get(hmclHome).toAbsolutePath().normalize();
+            BSL_DIRECTORY = Paths.get(BSLHome).toAbsolutePath().normalize();
         }
     }
 

@@ -182,7 +182,7 @@ public final class UpdateHandler {
     private static boolean isFirstLaunchAfterUpgrade() {
         Optional<Path> currentPath = JarUtils.thisJar();
         if (currentPath.isPresent()) {
-            Path updated = Metadata.HMCL_DIRECTORY.resolve("HMCL-" + Metadata.VERSION + ".jar");
+            Path updated = Metadata.BSL_DIRECTORY.resolve("HMCL-" + Metadata.VERSION + ".jar");
             if (currentPath.get().toAbsolutePath().equals(updated.toAbsolutePath())) {
                 return true;
             }
@@ -191,7 +191,7 @@ public final class UpdateHandler {
     }
 
     private static void breakForceUpdateFeature() {
-        Path hmclVersionJson = Metadata.HMCL_DIRECTORY.resolve("hmclver.json");
+        Path hmclVersionJson = Metadata.BSL_DIRECTORY.resolve("hmclver.json");
         if (Files.isRegularFile(hmclVersionJson)) {
             try {
                 Map<?, ?> content = new Gson().fromJson(FileUtils.readText(hmclVersionJson), Map.class);

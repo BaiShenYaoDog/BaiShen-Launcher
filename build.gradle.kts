@@ -11,7 +11,7 @@ plugins {
     id("com.github.johnrengelman.shadow") version "7.1.2"
 }
 
-val isOfficial = System.getenv("HMCL_SIGNATURE_KEY") != null
+val isOfficial = System.getenv("BSL_SIGNATURE_KEY") != null
         || (System.getenv("GITHUB_REPOSITORY_OWNER") == "ChengZhiNB" && System.getenv("GITHUB_BASE_REF")
     .isNullOrEmpty())
 
@@ -25,7 +25,7 @@ val buildNumber = System.getenv("BUILD_NUMBER")?.toInt().let { number ->
         if (!shortCommit.isNullOrEmpty()) "$prefix-$shortCommit" else "SNAPSHOT"
     }
 }
-val versionRoot = System.getenv("VERSION_ROOT") ?: "1.0.1"
+val versionRoot = System.getenv("VERSION_ROOT") ?: "1.0.3"
 val versionType = System.getenv("VERSION_TYPE") ?: if (isOfficial) "nightly" else "unofficial"
 
 version = "$versionRoot.$buildNumber"
@@ -53,7 +53,7 @@ fun createChecksum(file: File) {
 }
 
 fun attachSignature(jar: File) {
-    val keyLocation = System.getenv("HMCL_SIGNATURE_KEY")
+    val keyLocation = System.getenv("BSL_SIGNATURE_KEY")
     if (keyLocation == null) {
         logger.warn("Missing signature key")
         return
@@ -65,7 +65,7 @@ fun attachSignature(jar: File) {
     ZipFile(jar).use { zip ->
         zip.stream()
             .sorted(Comparator.comparing { it.name })
-            .filter { it.name != "META-INF/hmcl_signature" }
+            .filter { it.name != "META-INF/BSL_signature" }
             .forEach {
                 signer.update(digest("SHA-512", it.name.toByteArray()))
                 signer.update(digest("SHA-512", zip.getInputStream(it).readBytes()))
@@ -73,7 +73,7 @@ fun attachSignature(jar: File) {
     }
     val signature = signer.sign()
     FileSystems.newFileSystem(URI.create("jar:" + jar.toURI()), emptyMap<String, Any>()).use { zipfs ->
-        Files.newOutputStream(zipfs.getPath("META-INF/hmcl_signature")).use { it.write(signature) }
+        Files.newOutputStream(zipfs.getPath("META-INF/BSL_signature")).use { it.write(signature) }
     }
 }
 

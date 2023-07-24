@@ -54,7 +54,7 @@ public final class HMCLModpackInstallTask extends Task<Void> {
                 }.getType());
 
                 if (!HMCLModpackProvider.INSTANCE.getName().equals(config.getType()))
-                    throw new IllegalArgumentException("Version " + name + " is not a HMCL modpack. Cannot update this version.");
+                    throw new IllegalArgumentException("Version " + name + " is not a BSL modpack. Cannot update this version.");
             }
         } catch (JsonParseException | IOException ignore) {
         }

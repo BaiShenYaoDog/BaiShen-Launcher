@@ -158,7 +158,7 @@ public final class Accounts {
 
     @SuppressWarnings("unchecked")
     private static void loadGlobalAccountStorages() {
-        Path globalAccountsFile = Metadata.HMCL_DIRECTORY.resolve("accounts.json");
+        Path globalAccountsFile = Metadata.BSL_DIRECTORY.resolve("accounts.json");
         if (Files.exists(globalAccountsFile)) {
             try (Reader reader = Files.newBufferedReader(globalAccountsFile)) {
                 globalAccountStorages.setAll((List<Map<Object, Object>>)
@@ -349,7 +349,7 @@ public final class Accounts {
         String authlibinjectorLocation = System.getProperty("hmcl.authlibinjector.location");
         if (authlibinjectorLocation == null) {
             return new AuthlibInjectorDownloader(
-                    Metadata.HMCL_DIRECTORY.resolve("authlib-injector.jar"),
+                    Metadata.BSL_DIRECTORY.resolve("authlib-injector.jar"),
                     DownloadProviders::getDownloadProvider) {
                 @Override
                 public Optional<AuthlibInjectorArtifactInfo> getArtifactInfoImmediately() {

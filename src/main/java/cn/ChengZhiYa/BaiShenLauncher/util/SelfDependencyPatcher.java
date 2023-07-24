@@ -49,7 +49,7 @@ import java.util.concurrent.CancellationException;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.logging.Level;
 
-import static cn.ChengZhiYa.BaiShenLauncher.Metadata.HMCL_DIRECTORY;
+import static cn.ChengZhiYa.BaiShenLauncher.Metadata.BSL_DIRECTORY;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.stream.Collectors.toSet;
 
@@ -311,7 +311,7 @@ public final class SelfDependencyPatcher {
 
     private static final class DependencyDescriptor {
         private static final String DEPENDENCIES_LIST_FILE = "/assets/openjfx-dependencies.json";
-        private static final Path DEPENDENCIES_DIR_PATH = HMCL_DIRECTORY.resolve("dependencies").resolve(Platform.getPlatform().toString()).resolve("openjfx");
+        private static final Path DEPENDENCIES_DIR_PATH = BSL_DIRECTORY.resolve("dependencies").resolve(Platform.getPlatform().toString()).resolve("openjfx");
         public String module;
         public String groupId;
         public String artifactId;

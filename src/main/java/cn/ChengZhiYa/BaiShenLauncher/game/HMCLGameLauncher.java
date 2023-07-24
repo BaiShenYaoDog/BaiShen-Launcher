@@ -16,11 +16,6 @@ import java.util.Map;
 import java.util.logging.Level;
  
 public final class HMCLGameLauncher extends DefaultLauncher {
-
-    public HMCLGameLauncher(GameRepository repository, Version version, AuthInfo authInfo, LaunchOptions options) {
-        this(repository, version, authInfo, options, null);
-    }
-
     public HMCLGameLauncher(GameRepository repository, Version version, AuthInfo authInfo, LaunchOptions options, ProcessListener listener) {
         this(repository, version, authInfo, options, listener, true);
     }
